@@ -38,7 +38,8 @@ function Registration() {
 
     await axios.post(baseUrl+'/api/employee/create-employee', details)
     .then(response => {
-      console.log(response);
+      // console.log(response);
+      alert('Employee added successfully!!')
       navigate(routes.LoginPage);
     })
     .catch(error => {

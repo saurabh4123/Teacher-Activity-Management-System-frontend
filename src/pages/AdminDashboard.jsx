@@ -1,5 +1,9 @@
-import React,{useState} from "react";
+import React,{useState,useEffect} from "react";
 import '../css/admindash.css'
+import axios from "axios";
+import { baseUrl } from "../utils/constans";
+import { useNavigate } from "react-router-dom";
+import routes from "../router/routes";
 
 function AdminDashboard() {
   const [selectedFilters, setSelectedFilters] = useState({
@@ -9,8 +13,11 @@ function AdminDashboard() {
     toDate: "",
   });
 
+  const navigate=useNavigate();
+
   function handleLogout() {
     alert("Logout Successfull");
+    navigate(routes.LoginPage)
   }
 
   function handleCheckboxChange(e) {
@@ -28,18 +35,24 @@ function AdminDashboard() {
     });
   }
 
-  const teachers = ["Teacher 1", "Teacher 2", "Teacher 3"];
+  // const teachers = ["Teacher 1", "Teacher 2", "Teacher 3"];
   // Get teacher list from backend
-  // const [teachers, setTeachers] = useState([]);
-  // useEffect(() => {
-  //   axios.get("https://your-api-url.com/teachers")
-  //     .then(response => {
-  //       setTeachers(response.data);
-  //     })
-  //     .catch(error => {
-  //       console.log(error);
-  //     });
-  // }, []);
+  const [teachers, setTeachers] = useState([]);
+  const [tIDs,setTids] = useState([]);
+  useEffect(() => {
+    axios.get(baseUrl+"/api/employee/get-all")
+      .then(response => {
+        const teacherNames = response.data.map(teacher => teacher.name);
+                            setTeachers(teacherNames);
+                            // console.log(teacherNames);
+        const teacherID = response.data.map(teacher=>teacher.e_id);
+                        setTids(teacherID);
+                        // console.log(teacherID)
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }, []);
 
 
 
@@ -118,15 +131,15 @@ function AdminDashboard() {
       </div>
 
       <div className="activity">
-      <h6>Filter by teachers</h6>
+        <h6>Filter by teachers</h6>
         <div className="checkbox-container">
-          {teachers.map((teacher, index) => (
+          {teachers && teachers.map((teacher, index) => (
             <React.Fragment key={index}>
               <input
                 type="checkbox"
                 id={teacher}
                 name="teachers"
-                value={teacher}
+                value={tIDs[index]}
                 onChange={handleCheckboxChange}
               />
               <label htmlFor={teacher}>{teacher}</label>
