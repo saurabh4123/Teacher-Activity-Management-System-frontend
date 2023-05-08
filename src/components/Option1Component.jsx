@@ -21,6 +21,8 @@ function Option1Component() {
   };
 
   return (
+    <div className='container'>
+      <h1>Add Conferences,Seminars,Workshops conducted</h1>
     <form onSubmit={handleSubmit}>
       <div>
         <label>Event Name:</label>
@@ -44,6 +46,7 @@ function Option1Component() {
       </div>
       <button type="submit">Submit</button>
     </form>
+    </div>
   );
 }
 

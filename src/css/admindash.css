@@ -1,0 +1,41 @@
+.admin-dashboard-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 50px;
+  }
+  
+  .logout-div {
+    margin-left: auto;
+    margin-top: 1rem;
+  }
+  
+  .activity {
+    margin-top: 30px;
+    width: 100%;
+  }
+  
+  .activity h6 {
+    margin-bottom: 10px;
+  }
+  
+  .checkbox-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start; /* added */
+  }
+  
+  .checkbox-container label {
+    margin-left: 5px;
+  }
+  
+  .checkbox-container input[type="checkbox"] {
+    margin-right: 5px;
+  }
+  
+  .logout-div button {
+    margin-left: auto;
+    margin-top: 1rem;
+  }
+  

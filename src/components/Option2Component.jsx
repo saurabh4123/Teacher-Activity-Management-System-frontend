@@ -22,6 +22,8 @@ function Option2Component() {
   };
 
   return (
+    <div className='container'>
+      <h1>Research Publications</h1>
     <form onSubmit={handleSubmit}>
       <div>
         <label>Author Name:</label>
@@ -45,6 +47,7 @@ function Option2Component() {
       </div>
       <button type="submit">Submit</button>
     </form>
+    </div>
   );
 }
 

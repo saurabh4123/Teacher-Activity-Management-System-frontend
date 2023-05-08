@@ -1,4 +1,5 @@
 import React,{useState} from "react";
+import '../css/admindash.css'
 
 function AdminDashboard() {
   const [selectedFilters, setSelectedFilters] = useState({
@@ -26,6 +27,21 @@ function AdminDashboard() {
       return updatedFilters;
     });
   }
+
+  const teachers = ["Teacher 1", "Teacher 2", "Teacher 3"];
+  // Get teacher list from backend
+  // const [teachers, setTeachers] = useState([]);
+  // useEffect(() => {
+  //   axios.get("https://your-api-url.com/teachers")
+  //     .then(response => {
+  //       setTeachers(response.data);
+  //     })
+  //     .catch(error => {
+  //       console.log(error);
+  //     });
+  // }, []);
+
+
 
   function handleFromDateChange(e) {
     setSelectedFilters((prevFilters) => ({
@@ -64,7 +80,7 @@ function AdminDashboard() {
             value="Activity1"
             onChange={handleCheckboxChange}
           />
-          <label htmlFor="Activity1"> Activity1</label>
+          <label htmlFor="Activity1"> Conferences,Seminars,Workshops conducted</label>
           <input
             type="checkbox"
             id="Activity2"
@@ -72,7 +88,7 @@ function AdminDashboard() {
             value="Activity2"
             onChange={handleCheckboxChange}
           />
-          <label htmlFor="Activity2"> Activity2</label>
+          <label htmlFor="Activity2"> Research Publications</label>
           <input
             type="checkbox"
             id="Activity3"
@@ -80,7 +96,7 @@ function AdminDashboard() {
             value="Activity3"
             onChange={handleCheckboxChange}
           />
-          <label htmlFor="Activity3"> Activity3</label>
+          <label htmlFor="Activity3"> Research Projects Undertaken</label>
           <input
             type="checkbox"
             id="Activity4"
@@ -88,7 +104,7 @@ function AdminDashboard() {
             value="Activity4"
             onChange={handleCheckboxChange}
           />
-          <label htmlFor="Activity4"> Activity4</label>
+          <label htmlFor="Activity4"> Staff achievement</label>
           <input
             type="checkbox"
             id="Activity5"
@@ -96,30 +112,26 @@ function AdminDashboard() {
             value="Activity5"
             onChange={handleCheckboxChange}
           />
-          <label htmlFor="Activity5"> Activity5</label>
+          <label htmlFor="Activity5"> Student achievement</label>
           <br />
         </div>
       </div>
 
       <div className="activity">
-        <h6>Filter by teachers</h6>
+      <h6>Filter by teachers</h6>
         <div className="checkbox-container">
-          <input
-            type="checkbox"
-            id="Teacher1"
-            name="teachers"
-            value="Teacher1"
-            onChange={handleCheckboxChange}
-          />
-          <label htmlFor="Activity1"> Teacher 1</label>
-          <input
-            type="checkbox"
-            id="Teacher2"
-            name="teachers"
-            value="Teacher2"
-            onChange={handleCheckboxChange}
-          />
-          <label htmlFor="Activity2"> Teacher 2</label>
+          {teachers.map((teacher, index) => (
+            <React.Fragment key={index}>
+              <input
+                type="checkbox"
+                id={teacher}
+                name="teachers"
+                value={teacher}
+                onChange={handleCheckboxChange}
+              />
+              <label htmlFor={teacher}>{teacher}</label>
+            </React.Fragment>
+          ))}
         </div>
       </div>
 

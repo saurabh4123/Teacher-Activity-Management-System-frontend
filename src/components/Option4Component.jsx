@@ -20,6 +20,8 @@ function Option4Component() {
   };
 
   return (
+    <div className='container'>
+      <h1>Staff achievement</h1>
     <form onSubmit={handleSubmit}>
       <div>
         <label>Name of staff:</label>
@@ -39,6 +41,7 @@ function Option4Component() {
       </div>
       <button type="submit">Submit</button>
     </form>
+    </div>
   );
 }
 

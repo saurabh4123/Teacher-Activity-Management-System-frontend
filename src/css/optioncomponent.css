@@ -38,4 +38,7 @@ form {
   button[type="submit"]:hover {
     background-color: #005fa3;
   }
-  
+  h1 {
+    color: blue;
+    text-align: center;
+  }  

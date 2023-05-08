@@ -18,7 +18,9 @@ function Option3Component() {
   };
 
   return (
+    <div className='container'>
     <form onSubmit={handleSubmit}>
+      <h1>Research Projects Undertaken</h1>
       <div>
         <label>Title of research:</label>
         <input type="text" value={titleOfResearch} onChange={(e) => setTitle(e.target.value)} />
@@ -33,6 +35,7 @@ function Option3Component() {
       </div>
       <button type="submit">Submit</button>
     </form>
+    </div>
   );
 }
 
