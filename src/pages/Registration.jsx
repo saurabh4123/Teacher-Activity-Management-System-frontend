@@ -38,21 +38,21 @@ function Registration() {
             type="text"
             name="name"
             value={details.name}
-            placeholder="name"
+            placeholder="Name"
             onChange={handleChange}
           />
           <input
             type="text"
             name="email"
             value={details.email}
-            placeholder="email"
+            placeholder="E-mail"
             onChange={handleChange}
           />
           <input
             type="password"
             name="password"
             value={details.password}
-            placeholder="password"
+            placeholder="Password"
             onChange={handleChange}
           />
         </div>

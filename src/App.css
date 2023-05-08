@@ -58,3 +58,39 @@ form * {
 .checkbox-container * {
   margin: 10px;
 }
+.sidebar {
+  width: 300px;
+  height: 100%;
+  background-color: #f2f2f2;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow-y: auto;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #333;
+  cursor: pointer;
+  border-bottom: 1px solid #ccc;
+}
+
+li:hover {
+  background-color: #ccc;
+  color: #fff;
+}
+
+.option-container {
+  width: calc(100vw - 200px); /* Take up remaining space on screen */
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
