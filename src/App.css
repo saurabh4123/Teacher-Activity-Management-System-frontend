@@ -1,38 +1,60 @@
-.App {
+.navbar{
+  background-color:antiquewhite;
+  justify-content: flex-start;
+}
+
+.btn{
+  margin-left: 10px;
+}
+
+.login-page{
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 91vh;
+}
+
+.form-box{
+  border: 2px solid black;
+  border-radius: 20px;
+  /* width: 25%; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 50%;
+
+}
+
+form * {
+  margin: 10px;
+}
+
+
+.login-form{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.registration-page{
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.admin-dashboard-page{
+  text-align: center;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.logout-div{
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: flex-end;
 }
 
-.App-link {
-  color: #61dafb;
+.checkbox-container{
+  border: 1px solid black;
+  width: 80%;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.checkbox-container * {
+  margin: 10px;
 }
