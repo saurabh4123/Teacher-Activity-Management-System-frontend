@@ -1,5 +1,7 @@
 import React,{useState} from 'react'
 import '../css/panels.css'
+import { Link } from 'react-router-dom';
+import routes from '../router/routes';
 
 function TeacherDashboard() {
   const [activePanel, setActivePanel] = useState("panel1");
@@ -119,6 +121,7 @@ function TeacherDashboard() {
 
   return (
     <div className="two-panel-layout">
+      <button className='btnn'><Link to={routes.ActivityRegistration}>Add Activity</Link></button>
       <div className="panel-switcher">
         <button
           className={`panel-button ${activePanel === "panel1" ? "active" : ""}`}

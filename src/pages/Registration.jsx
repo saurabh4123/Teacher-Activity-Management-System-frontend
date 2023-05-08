@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import routes from "../router/routes";
+import { baseUrl } from "../utils/constans";
+import axios from "axios";
 
 function Registration() {
   const [details, setDetails] = useState({
@@ -12,7 +14,9 @@ function Registration() {
     joinDate: "",
     department: "",
     mobileNo: "",
+    roles:"Teacher"
   });
+  const navigate = useNavigate();
 
   function handleChange(e) {
     setDetails({
@@ -21,13 +25,29 @@ function Registration() {
     });
   }
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
     console.log(details);
-    // navigate(routes.LoginPage);
+    for (const property in details) {
+        if (details[property] === "") {
+          alert(`Please fill in ${property}`);
+          return;
+        }
+    }
+    
+
+    await axios.post(baseUrl+'/api/employee/create-employee', details)
+    .then(response => {
+      console.log(response);
+      navigate(routes.LoginPage);
+    })
+    .catch(error => {
+      console.log(error);
+      alert('Email already in use..')
+    });
   }
 
-  const navigate = useNavigate();
+  
 
   return (
     <div className="registration-page">
@@ -59,6 +79,10 @@ function Registration() {
         <div className="mid">
           <input
             type="text"
+            minLength={10}
+            maxLength={10}
+            pattern="[1-9]{1}[0-9]{9}"
+            title="mobile no can only be between 0 to 9"
             name="mobileNo"
             value={details.mobileNo}
             placeholder="Mobile no"
@@ -95,13 +119,6 @@ function Registration() {
             placeholder="Join Date"
             onChange={handleChange}
           />
-          {/* <input
-            type="password"
-            name="confirm_password"
-            value={details.password}
-            placeholder="Confirm password"
-            onChange={handleChange}
-          /> */}
         </div>
         <button type="submit" className="btn btn-success">
           Register
