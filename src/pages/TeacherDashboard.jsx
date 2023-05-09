@@ -62,8 +62,8 @@ function TeacherDashboard() {
       <p><strong>Email:</strong> {teacher.email}</p>
       <p><strong>Department:</strong> {teacher.department}</p>
       
-      <h3>Activities:</h3>
-      <h4>Activity 1:</h4>
+      <h3 style={{ color: "orange" }}>Activities:</h3>
+      <h4 style={{ color: "blue" }}>Activity 1:</h4>
       {teacher.activity1s && teacher.activity1s.map(activity => (
         <div key={activity.a1_id}>
           <p><strong>Event:</strong> {activity.event}</p>
@@ -71,10 +71,11 @@ function TeacherDashboard() {
           <p><strong>Date:</strong> {activity.date}</p>
           <p><strong>Number of Participants:</strong> {activity.noOfParticipants}</p>
           <p><strong>Remark:</strong> {activity.remark}</p>
+          <div className="dotted-line"></div>
         </div>
       ))}
       
-      <h4>Activity 2:</h4>
+      <h4 style={{ color: "blue" }}>Activity 2:</h4>
       {teacher.activity2s && teacher.activity2s.map(activity => (
         <div key={activity.a2_id}>
           <p><strong>Author:</strong> {activity.author}</p>
@@ -82,29 +83,32 @@ function TeacherDashboard() {
           <p><strong>Date:</strong> {activity.date}</p>
           <p><strong>Publication:</strong> {activity.publication}</p>
           <p><strong>Remark:</strong> {activity.remark}</p>
+          <div className="dotted-line"></div>
         </div>
       ))}
       
-      <h4>Activity 3:</h4>
+      <h4 style={{ color: "blue" }}>Activity 3:</h4>
       {teacher.activity3s && teacher.activity3s.map(activity => (
         <div key={activity.a3_id}>
           <p><strong>Title of Research:</strong> {activity.titleOfResearch}</p>
           <p><strong>Date:</strong> {activity.date}</p>
           <p><strong>Name of Researchers:</strong> {activity.nameOfResearchers}</p>
+          <div className="dotted-line"></div>
         </div>
       ))}
       
-      <h4>Activity 4:</h4>
+      <h4 style={{ color: "blue" }}>Activity 4:</h4>
       {teacher.activity4s && teacher.activity4s.map(activity => (
         <div key={activity.a4_id}>
           <p><strong>Name:</strong> {activity.name}</p>
           <p><strong>Achievement:</strong> {activity.achievement}</p>
           <p><strong>Date:</strong> {activity.date}</p>
           <p><strong>Remark:</strong> {activity.remark}</p>
+          <div className="dotted-line"></div>
         </div>
       ))}
       
-      <h4>Activity 5:</h4>
+      <h4 style={{ color: "blue" }}>Activity 5:</h4>
       {teacher.activity5s && teacher.activity5s.map(activity => (
         <div key={activity.a5_id}>
           <p><strong>Student Name:</strong> {activity.studentName}</p>
@@ -112,6 +116,7 @@ function TeacherDashboard() {
           <p><strong>Date:</strong> {activity.date}</p>
           <p><strong>Achievement:</strong> {activity.achievement}</p>
           <p><strong>Remark:</strong> {activity.remark}</p>
+          <div className="dotted-line"></div>
         </div>
       ))}
     </div>

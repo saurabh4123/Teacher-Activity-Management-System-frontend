@@ -28,6 +28,10 @@ function Option3Component() {
       // console.log(response);
       alert('Activity added successfully!!')
       navigate(routes.ActivityRegistration);
+      setDate('');
+      setNameOfResearchers('');
+      setTitle('');
+      event.target.reset();
     })
     .catch(error => {
       console.log(error);

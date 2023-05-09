@@ -31,6 +31,12 @@ function Option1Component() {
       // console.log(response);
       alert('Activity added successfully!!')
       navigate(routes.ActivityRegistration);
+      setEvent('');
+      setTitle('');
+      setDate('');
+      setNoOfParticipants('');
+      setRemark('');
+      e.target.reset();
     })
     .catch(error => {
       console.log(error);

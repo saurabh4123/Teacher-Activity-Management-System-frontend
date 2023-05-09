@@ -49,4 +49,7 @@
     text-decoration: none;
     color: black; /* change the text color to blue */
   }
-    
+  .dotted-line {
+    border-top: 1px dotted black;
+  }
+  

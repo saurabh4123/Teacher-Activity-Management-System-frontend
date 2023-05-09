@@ -32,6 +32,12 @@ function Option2Component() {
       // console.log(response);
       alert('Activity added successfully!!')
       navigate(routes.ActivityRegistration);
+      setAuthor('');
+      setTitle('');
+      setDate('');
+      setPublication('');
+      setRemark('');
+      event.target.reset();
     })
     .catch(error => {
       console.log(error);

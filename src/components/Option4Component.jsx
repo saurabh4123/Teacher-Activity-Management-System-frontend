@@ -30,6 +30,11 @@ function Option4Component() {
       // console.log(response);
       alert('Activity added successfully!!')
       navigate(routes.ActivityRegistration);
+      setAchievement('');
+      setDate('');
+      setName('');
+      setRemark('');
+      event.target.reset();
     })
     .catch(error => {
       console.log(error);
