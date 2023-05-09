@@ -1,16 +1,31 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import routes from "../router/routes";
+import axios from "axios";
+import {baseUrl} from "../utils/constans.js"
 
 function Login() {
+  const navigate=useNavigate();
   const [credentials, setCredentials] = useState({
     email: "",
     password: "",
   });
 
-  function handleSubmit(e) {
+  async function onSubmitHandler(e) {
     e.preventDefault();
-    console.log(credentials);
+    try {
+      // console.log(credentials);
+    const response = await axios.post(baseUrl + "/api/employee/login", credentials);
+    localStorage.setItem("user", JSON.stringify(response.data));
+    alert("Login Successful \nRedirecting to the home page ");
+    if (response.data.roles === "Admin") {
+      navigate(routes.AdminDashboard);
+    } else {
+      navigate(routes.TeacherDashboard);
+    }
+    } catch {
+      alert("Invalid Credentails !!!");
+    }
   }
 
   function handleChange(e) {
@@ -24,7 +39,7 @@ function Login() {
     <div className="login-page">
       <div className="form-box">
         <h3>Teachers Login</h3>
-        <form className="login-form" onSubmit={handleSubmit}>
+        <form className="login-form" onSubmit={onSubmitHandler}>
           <input
             name="email"
             value={credentials.passwrod}

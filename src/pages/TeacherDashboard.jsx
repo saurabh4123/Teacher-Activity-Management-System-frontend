@@ -1,7 +1,9 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 import '../css/panels.css'
 import { Link } from 'react-router-dom';
 import routes from '../router/routes';
+import axios from 'axios';
+import {baseUrl} from '../utils/constans.js'
 
 function TeacherDashboard() {
   const [activePanel, setActivePanel] = useState("panel1");
@@ -9,115 +11,20 @@ function TeacherDashboard() {
   const handleClick = (panel) => {
     setActivePanel(panel);
   };
+  const tech=JSON.parse(localStorage.getItem("user"));
+  const teacherId=tech.e_id;
+  const [teacher, setTeacher] = useState({});
 
-  // const [teacher, setTeacher] = useState({});
-
-  // useEffect(() => {
-  //   // Fetch teacher data from backend API
-  //   axios.get(`/api/teachers/${props.teacherId}`)
-  //     .then(response => {
-  //       setTeacher(response.data);
-  //     })
-  //     .catch(error => {
-  //       console.log(error);
-  //     });
-  // }, [props.teacherId]);
-
-  const teacher={ "e_id": 1,
-  "name": "Jay",
-  "mobilenumber": "9741354109",
-  "email": "jay2@gmail.com",
-  "address": "IIIT Bangalore",
-  "password": "jay",
-  "roles": "Admin",
-  "qualification": "B.C.A",
-  "joinDate": "2020-05-04T00:00:00.000+00:00",
-  "activity1s": [
-      {
-          "a1_id": 1,
-          "event": "Hallo",
-          "title": "TedEx",
-          "date": "2020-05-04T00:00:00.000+00:00",
-          "noOfParticipants": 150,
-          "remark": "Good"
-      },
-      {
-          "a1_id": 2,
-          "event": "Hallo",
-          "title": "TedEx",
-          "date": "2020-05-04T00:00:00.000+00:00",
-          "noOfParticipants": 150,
-          "remark": "Good"
-      }
-  ],
-  "activity2s": [
-      {
-          "a2_id": 1,
-          "author": "SD",
-          "title": "Madagascar",
-          "date": "2020-05-06T00:00:00.000+00:00",
-          "remark": "Nice",
-          "publication": "J.P publications"
-      },
-      {
-          "a2_id": 2,
-          "author": "SD",
-          "title": "Madagascar",
-          "date": "2020-05-06T00:00:00.000+00:00",
-          "remark": "Nice",
-          "publication": "J.P publications"
-      }
-  ],
-  "activity3s": [
-      {
-          "a3_id": 1,
-          "titleOfResearch": "sleepCycle",
-          "date": "2022-04-08T00:00:00.000+00:00",
-          "nameOfResearchers": "Sandy,Deepak,Palak,Tanu"
-      },
-      {
-          "a3_id": 2,
-          "titleOfResearch": "sleepCycle",
-          "date": "2022-04-08T00:00:00.000+00:00",
-          "nameOfResearchers": "Sandy,Deepak,Palak,Tanu"
-      }
-  ],
-  "activity4s": [
-      {
-          "a4_id": 1,
-          "name": "Sandy",
-          "achievement": "Gold for sleeping",
-          "date": "2022-05-08T00:00:00.000+00:00",
-          "remark": "Nice!!But try to sleep more"
-      },
-      {
-          "a4_id": 2,
-          "name": "Sandy",
-          "achievement": "Gold for sleeping",
-          "date": "2022-05-08T00:00:00.000+00:00",
-          "remark": "Nice!!But try to sleep more"
-      }
-  ],
-  "activity5s": [
-      {
-          "a5_id": 1,
-          "studentName": "Sandy",
-          "standard": "X-th",
-          "date": "2022-04-01T00:00:00.000+00:00",
-          "achievement": "Gold medal for simping",
-          "remark": "Simp more and more!!!"
-      },
-      {
-          "a5_id": 2,
-          "studentName": "Sandy",
-          "standard": "X-th",
-          "date": "2022-04-01T00:00:00.000+00:00",
-          "achievement": "Gold medal for simping",
-          "remark": "Simp more and more!!!"
-      }
-  ],
-  "department": "CSE"}
-
+  useEffect(() => {
+    // Fetch teacher data from backend API
+    axios.get(baseUrl+`/api/employee/get-empById/${teacherId}`)
+      .then(response => {
+        setTeacher(response.data);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }, [teacherId]);
 
   return (
     <div className="two-panel-layout">
