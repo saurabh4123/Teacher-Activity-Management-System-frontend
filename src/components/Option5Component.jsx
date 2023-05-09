@@ -1,13 +1,21 @@
 import React,{useState} from 'react'
 import '../css/optioncomponent.css'
+import routes from '../router/routes';
+import { baseUrl } from '../utils/constans';
+import axios from 'axios';
+import { useNavigate } from "react-router-dom";
 
 
 function Option5Component() {
+  const navigate=useNavigate();
   const [studentName, setName] = useState('');
   const [standard, setStandard] = useState('');
   const [date, setDate] = useState('');
   const [achievement, setAchievement] = useState('');
   const [remark, setRemark] = useState('');
+
+  const tech=JSON.parse(localStorage.getItem("user"));
+  const teacherId=tech.e_id;
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -19,6 +27,16 @@ function Option5Component() {
       remark,
     };
     console.log(formData);
+    axios.post(baseUrl+'/api/activity/add-activity5/'+teacherId, formData)
+    .then(response => {
+      // console.log(response);
+      alert('Activity added successfully!!')
+      navigate(routes.ActivityRegistration);
+    })
+    .catch(error => {
+      console.log(error);
+      alert('Activity addition unsuccessful..')
+    });
   };
 
   return (

@@ -50,7 +50,7 @@ function TeacherDashboard() {
               <p>Name: {teacher.name}</p>
               <p>Department: {teacher.department}</p>
               <p>Email: {teacher.email}</p>
-              <p>Phone: {teacher.mobilenumber}</p>
+              <p>Phone: {teacher.mobileNo}</p>
               <p>Qualification: {teacher.qualification}</p>
           </div>
         </p>
