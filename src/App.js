@@ -1,6 +1,5 @@
 import "./App.css";
 import axios from "axios";
-import { EmployeeContextProvider } from "./contexts/employeeID";
 import AppRouter from "./router/AppRouter";
 import { baseUrl } from "./utils/constans";
 
@@ -25,9 +24,7 @@ axios.interceptors.request.use(
 function App() {
   return (
     <>
-      <EmployeeContextProvider>
         <AppRouter />
-      </EmployeeContextProvider>
     </>
   );
 }
