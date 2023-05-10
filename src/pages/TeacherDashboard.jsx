@@ -4,9 +4,12 @@ import { Link } from 'react-router-dom';
 import routes from '../router/routes';
 import axios from 'axios';
 import {baseUrl} from '../utils/constans.js'
+import { useNavigate } from "react-router-dom";
+
 
 function TeacherDashboard() {
   const [activePanel, setActivePanel] = useState("panel1");
+  const navigate=useNavigate();
 
   const handleClick = (panel) => {
     setActivePanel(panel);
@@ -14,6 +17,12 @@ function TeacherDashboard() {
   const tech=JSON.parse(localStorage.getItem("user"));
   const teacherId=tech.e_id;
   const [teacher, setTeacher] = useState({});
+
+
+  function handleLogout() {
+    alert("Logout Successfull");
+    navigate(routes.LoginPage)
+  }
 
   useEffect(() => {
     // Fetch teacher data from backend API
@@ -28,6 +37,11 @@ function TeacherDashboard() {
 
   return (
     <div className="two-panel-layout">
+      <div className="logout-div">
+        <button className="btn btn-danger" onClick={handleLogout}>
+          Logout
+        </button>
+      </div>
       <button className='btnn'><Link to={routes.ActivityRegistration}>Add Activity</Link></button>
       <div className="panel-switcher">
         <button

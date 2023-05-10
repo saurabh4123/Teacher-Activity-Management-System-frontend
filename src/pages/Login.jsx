@@ -2,7 +2,10 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import routes from "../router/routes";
 import axios from "axios";
-import {baseUrl} from "../utils/constans.js"
+import {baseUrl} from "../utils/constans.js";
+
+const axiosInstance = axios.create();
+
 
 function Login() {
   const navigate=useNavigate();
@@ -15,7 +18,7 @@ function Login() {
     e.preventDefault();
     try {
       // console.log(credentials);
-    const response = await axios.post(baseUrl + "/api/employee/login", credentials);
+    const response = await axiosInstance.post(baseUrl + "/api/employee/login", credentials);
     localStorage.setItem("user", JSON.stringify(response.data));
     alert("Login Successful \nRedirecting to the home page ");
     if (response.data.roles === "Admin") {

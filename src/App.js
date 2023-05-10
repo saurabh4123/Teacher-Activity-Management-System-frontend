@@ -1,6 +1,5 @@
 import "./App.css";
 import axios from "axios";
-import Navbar from "./components/Navbar";
 import { EmployeeContextProvider } from "./contexts/employeeID";
 import AppRouter from "./router/AppRouter";
 import { baseUrl } from "./utils/constans";
@@ -27,7 +26,6 @@ function App() {
   return (
     <>
       <EmployeeContextProvider>
-        <Navbar />
         <AppRouter />
       </EmployeeContextProvider>
     </>

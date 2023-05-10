@@ -4,6 +4,8 @@ import routes from "../router/routes";
 import { baseUrl } from "../utils/constans";
 import axios from "axios";
 
+const axiosInstance = axios.create();
+
 function Registration() {
   const [details, setDetails] = useState({
     name: "",
@@ -36,7 +38,7 @@ function Registration() {
     }
     
 
-    await axios.post(baseUrl+'/api/employee/create-employee', details)
+    await axiosInstance.post(baseUrl+'/api/employee/create-employee', details)
     .then(response => {
       // console.log(response);
       alert('Employee added successfully!!')
