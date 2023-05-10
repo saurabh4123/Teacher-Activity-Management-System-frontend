@@ -1,0 +1,2 @@
+[mypc]
+client1 ansible_host=172.16.131.127 ansible_connection=ssh ansible_user=saurabh ansible_sudo_pass=Saurabh
