@@ -9,10 +9,11 @@ services:
     environment:
       MYSQL_DATABASE: "spe"
       MYSQL_ROOT_PASSWORD: "Password"
+      MYSQL_ROOT_HOST: '%'
     ports:
       - "3307:3306"
     volumes:
-      - spe-dp:/var/lib/mysql
+      - "~/spe-dp:/var/lib/mysql"
 
   spe-backend-container:
     image: "saurabh412/backendspe"
@@ -35,7 +36,7 @@ services:
       - "3000:3000"
     depends_on:
       - spe-backend-container
-    
+
 networks:
   spe-network:
     driver: bridge
