@@ -44,7 +44,7 @@ function Option4Component() {
 
   return (
     <div className='container'>
-      <h1>Staff achievement</h1>
+      <h1>Add Staff achievement</h1>
     <form onSubmit={handleSubmit}>
       <div>
         <label>Name of staff:</label>

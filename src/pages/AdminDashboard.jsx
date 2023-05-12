@@ -9,8 +9,8 @@ function AdminDashboard() {
   const [selectedFilters, setSelectedFilters] = useState({
     activities: [],
     teachers: [],
-    fromDate: "",
-    toDate: "",
+    month: "",
+    year: "",
   });
 
   const navigate=useNavigate();
@@ -59,20 +59,45 @@ function AdminDashboard() {
   function handleFromDateChange(e) {
     setSelectedFilters((prevFilters) => ({
       ...prevFilters,
-      fromDate: e.target.value,
+      month: e.target.name === "month" ? e.target.value : prevFilters.month,
     }));
   }
 
   function handleToDateChange(e) {
     setSelectedFilters((prevFilters) => ({
       ...prevFilters,
-      toDate: e.target.value,
+        year: e.target.value,
     }));
   }
 
   function handleSubmit(e) {
     e.preventDefault();
     console.log(selectedFilters);
+    const { activities, teachers, month, year } = selectedFilters;
+
+  const teacherIds = teachers.join(",");
+  const activityIds = activities.join(",");
+  const url = `${baseUrl}/api/employee/report-admin?emp-ids=${teacherIds}&year=${year}&month=${month}&activities=${activityIds}`;
+  axios({
+    url,
+    method: 'GET',
+    responseType: 'blob', // Set the response type to blob
+  })
+    .then((response) => {
+      // Create a Blob object from the response data
+      const blob = new Blob([response.data], { type: 'application/octet-stream' });
+
+      // Create a download link for the user to click on
+      const link = document.createElement('a');
+      link.href = window.URL.createObjectURL(blob);
+      link.download = `report_${new Date().toISOString()}.xlsx`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
   }
 
   return (
@@ -90,7 +115,7 @@ function AdminDashboard() {
             type="checkbox"
             id="Activity1"
             name="activities"
-            value="Activity1"
+            value="1"
             onChange={handleCheckboxChange}
           />
           <label htmlFor="Activity1"> Conferences,Seminars,Workshops conducted</label>
@@ -98,7 +123,7 @@ function AdminDashboard() {
             type="checkbox"
             id="Activity2"
             name="activities"
-            value="Activity2"
+            value="2"
             onChange={handleCheckboxChange}
           />
           <label htmlFor="Activity2"> Research Publications</label>
@@ -106,7 +131,7 @@ function AdminDashboard() {
             type="checkbox"
             id="Activity3"
             name="activities"
-            value="Activity3"
+            value="3"
             onChange={handleCheckboxChange}
           />
           <label htmlFor="Activity3"> Research Projects Undertaken</label>
@@ -114,7 +139,7 @@ function AdminDashboard() {
             type="checkbox"
             id="Activity4"
             name="activities"
-            value="Activity4"
+            value="4"
             onChange={handleCheckboxChange}
           />
           <label htmlFor="Activity4"> Staff achievement</label>
@@ -122,7 +147,7 @@ function AdminDashboard() {
             type="checkbox"
             id="Activity5"
             name="activities"
-            value="Activity5"
+            value="5"
             onChange={handleCheckboxChange}
           />
           <label htmlFor="Activity5"> Student achievement</label>
@@ -151,8 +176,16 @@ function AdminDashboard() {
       <div className="activity">
         <h6>Filter by date</h6>
         <div className="checkbox-container">
-          From : <input type="date" name="from" onChange={handleFromDateChange}/>
-          To : <input type="date" name="to" onChange={handleToDateChange} />
+        Month :{" "}
+          <select name="month" onChange={handleFromDateChange}>
+            <option value="">Select Month</option>
+            {Array.from({ length: 12 }, (_, i) => (
+              <option key={i} value={i + 1}>
+                {i + 1}
+              </option>
+            ))}
+          </select>
+          Year : <input type="number" name="year" onChange={handleToDateChange} />
         </div>
       </div>
       <button className="btn btn-primary" onClick={handleSubmit}>

@@ -47,7 +47,7 @@ function Option5Component() {
 
   return (
     <div className='container'>
-      <h1>Student achievement</h1>
+      <h1>Add Student achievement</h1>
     <form onSubmit={handleSubmit}>
       <div>
         <label>Name of student:</label>
