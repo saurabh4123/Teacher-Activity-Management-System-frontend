@@ -9,10 +9,11 @@ services:
     environment:
       MYSQL_DATABASE: "spe"
       MYSQL_ROOT_PASSWORD: "Password"
+      MYSQL_ROOT_HOST: '%'
     ports:
       - "3307:3306"
     volumes:
-      - spe-dp:/var/lib/mysql
+      - "~/spe-dp:/var/lib/mysql"
 
   spe-backend-container:
     image: "saurabh412/backendspe"
@@ -20,10 +21,6 @@ services:
     restart: always
     networks:
       - spe-network
-    # environment:
-    #   MYSQL_URL: jdbc:mysql://mysql-swapsie-service:3306/swapsieDevops?useSSL=false&useUnicode=yes&characterEncoding=UTF-8&allowPublicKeyRetrieval=true&serverTimezone=UTC
-    #   MYSQL_NAME: root
-    #   MYSQL_PASSWORD: Password
     ports:
       - "9080:9080"
     depends_on:
@@ -39,7 +36,7 @@ services:
       - "3000:3000"
     depends_on:
       - spe-backend-container
-    
+
 networks:
   spe-network:
     driver: bridge
