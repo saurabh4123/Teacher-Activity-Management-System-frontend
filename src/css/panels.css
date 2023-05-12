@@ -52,4 +52,31 @@
   .dotted-line {
     border-top: 1px dotted black;
   }
+  .btnnn {
+    color: black;
+    background-color: lightblue;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    position: absolute;
+    top: 310px;
+    left: 150px;
+    transform: translateY(-50%);
+  }
+  select {
+    font-size: 16px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-right: 10px;
+  }
+  
+  label {
+    margin-right: 10px;
+  }
+  
+  div {
+    margin-bottom: 20px;
+  }
   
