@@ -32,6 +32,7 @@ pipeline {
                 disableHostKeyChecking: true,
                 inventory: 'inventory',
                 playbook: 'ansible-playbook.yml'
+                vaultCredentialsId: 'ansible-vault-pass'
             }
         }
 
